@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 from get_template import get_template
 
 print("Content-type: text/html\n")
