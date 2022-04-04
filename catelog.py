@@ -6,4 +6,4 @@ fields = FieldStorage()
 
 print("Content-type: text/html\n")
 
-print(get_template("temp.html").render(category = fields["category"]))
+print(get_template("temp.html").render(category = fields.getvalue("category")))
