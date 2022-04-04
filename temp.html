@@ -66,15 +66,16 @@
                 <th>Description</th>
                 <th>Object Store Page</th>
             </tr>
+            {% for item in items %}
             <tr>
-                <td><img src="../static/permanentimages/outerwear2a.jpg" width="150" height="200" alt="outerwear2a">
-                    <img src="../static/permanentimages/outerwear2b.jpg" width="150" height="200" alt="outerwear2b">
+                <td>
+                    <img src="www/{{item.filename}}" width="150" height="200" alt="{{item.filename}}">
                 </td>
-                <td>3/7/22</td>
-                <td>Black puffer jacket, Uniqlo</td>
-                <td><a class="uHover" href="https://www.uniqlo.com/us/en/men-ultra-light-down-parka-443320.html">Men
-                        Ultra Light Down Parka (09 Black)</a></td>
+                <td>{{item.date}}</td>
+                <td>{{item.description}}</td>
+                <td><a class="uHover" href="{{item.link}}">huhuhu I'm aldene</a></td>
             </tr>
+            {% endfor %}
             <tr>
                 <td><img src="../static/permanentimages/outerwear3a.jpg" width="150" height="200" alt="outerwear3a">
                     <img src="../static/permanentimages/outerwear3b.jpg" width="150" height="200" alt="outerwear3b">
