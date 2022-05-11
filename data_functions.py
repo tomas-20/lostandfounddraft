@@ -23,6 +23,10 @@ def get_next_id():
 def id_to_filename(id):
     return f"www/lostitem{str(id)}"
 
+def add_image(id, image):
+    with open(id_to_filename(id), "wb") as file:
+        file.write(image)
+
 def add_item(category, date, description, link, image):
     id = get_next_id()
     db = connect("data.db")
@@ -30,9 +34,7 @@ def add_item(category, date, description, link, image):
     c.execute("INSERT INTO mesa VALUES (?, 0, ?, ?, ?, ?)", (id, category, date, description, link))
     db.commit()
     db.close()
-    file = open(id_to_filename(id), "wb")
-    file.write(image)
-    file.close()
+    add_image(id, image)
 
 def row_to_dic(row):
     dic = dict(row)
