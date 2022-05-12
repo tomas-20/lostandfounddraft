@@ -20,16 +20,21 @@ def get_next_id():
         return 0
     return max_id + 1
 
-def id_to_filename(id):
-    return f"www/lostitem{str(id)}"
+def id_to_filenames(id, image_count):
+    filenames = []
+    base_filename = f"www/lostitem{str(id)}"
+    suffix_number = ord("a")
+    for i in range(image_count):
+        filenames.append(base_filename + chr(suffix_number))
+        suffix_number += 1
+    return filenames
 
 def add_images(id, images):
-    base_filename = id_to_filename(id)
-    suffix_number = ord("a")
-    for image in images:
-        with open(base_filename + chr(suffix_number), "wb") as file:
+    filenames = id_to_filenames(id, len(images))
+    print("filenames are: " + str(filenames))
+    for image, filename in zip(images, filenames):
+        with open(filename, "wb") as file:
             file.write(image)
-        suffix_number += 1
 
 def add_item(category, date, description, link, images):
     id = get_next_id()
@@ -44,7 +49,7 @@ def row_to_dic(row):
     dic = dict(row)
     dic.pop("found")
     dic.pop("category")
-    dic["filename"] = id_to_filename(dic["id"])
+    dic["filenames"] = id_to_filenames(dic["id"], dic["image_count"])
     dic.pop("id")
     return dic
 
