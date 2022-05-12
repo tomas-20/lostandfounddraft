@@ -1,4 +1,4 @@
-#!/usr/bin/python3\
+#!/usr/bin/python3
 print("Content-type: text/html\n")
 
 import cgi
